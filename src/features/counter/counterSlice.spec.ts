@@ -7,6 +7,7 @@ import counterReducer, {
 
 describe('counter reducer', () => {
   const initialState: CounterState = {
+    userData:{},
     value: 3,
     status: 'idle',
   };
