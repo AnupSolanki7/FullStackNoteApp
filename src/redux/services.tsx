@@ -1,6 +1,9 @@
 import axios from "axios";
 import { searchedNotes } from "./noteSlice";
 
+let user = localStorage.getItem("full_stack_app_user");
+user = user ? JSON.parse(user) : null;
+
 export const userLogin = async (data: any) => {
   const result: any = await axios.post(
     "http://192.168.1.200:8000/api/users/login",
@@ -11,7 +14,12 @@ export const userLogin = async (data: any) => {
 
 export const getNotes = async () => {
   const result: any = await axios
-    .get("http://192.168.1.200:8000/api/notes/getnotes")
+    .get("http://192.168.1.200:8000/api/notes/getnotes", {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: user,
+      },
+    })
     .then((res) => {
       return res;
     });
@@ -21,7 +29,12 @@ export const getNotes = async () => {
 
 export const postNote = async (data: any) => {
   const result: any = await axios
-    .post("http://192.168.1.200:8000/api/notes/createnote", data)
+    .post("http://192.168.1.200:8000/api/notes/createnote", data, {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: user,
+      },
+    })
     .then((res) => {
       return res;
     });
@@ -31,22 +44,53 @@ export const postNote = async (data: any) => {
 
 export const deleteNote = async (id: any) => {
   const result: any = await axios.delete(
-    `http://192.168.1.200:8000/api/notes/deleteNote/${id}`
+    `http://192.168.1.200:8000/api/notes/deleteNote/${id}`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: user,
+      },
+    }
   );
 };
 
 export const editNote = async (id: any, data: any) => {
   const result: any = await axios.put(
     `http://192.168.1.200:8000/api/notes/editNote/${id}`,
-    data
+    data,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: user,
+      },
+    }
   );
 };
 
 export const searchNote = async (data: any) => {
   const result: any = await axios.post(
     `http://localhost:8000/api/notes/searchNote`,
-    data
+    data,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: user,
+      },
+    }
   );
 
-  return result
+  return result;
+};
+
+
+
+export const getCheckList = async () => {
+  const result: any = await axios.get("http://localhost:8000/api/checklist/getchecklist", {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: user,
+    },
+  })
+
+  return result;
 };

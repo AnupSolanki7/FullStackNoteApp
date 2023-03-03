@@ -28,7 +28,7 @@ export const noteSlice = createSlice({
     },
     searchedValue: (state:any, action:any) => {
       state.value = action.payload
-    }
+    },
   },
 });
 
