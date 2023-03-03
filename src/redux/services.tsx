@@ -94,3 +94,17 @@ export const getCheckList = async () => {
 
   return result;
 };
+
+
+
+
+export const isListChecked = async (id:any, data:any) => {
+  const result: any = await axios.put(`http://localhost:8000/api/checkedData/isChecked/${id}`, data ,{
+    headers: {
+      "Content-Type": "application/json",
+      authorization: user,
+    },
+  })
+
+  return result;
+};

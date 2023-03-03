@@ -1,14 +1,19 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import { getCheckList } from '../redux/services'
+import { useDispatch, useSelector } from 'react-redux'
+import { refresh } from '../redux/checkList'
+import { getCheckList, isListChecked } from '../redux/services'
 
 const CheckList = () => {
   const [checkList, setCheckList] = useState([])
+  const refreshList = useSelector((state:any) => state.CheckList)
+ const dispatch = useDispatch()
 
   useEffect(() => {
     getCheckListData()
-  }, [])
+  }, [refreshList])
   
+
 
   const getCheckListData = async () => {
     const result = await getCheckList().then((res) => {
@@ -16,7 +21,6 @@ const CheckList = () => {
     })
     
   }
-
 
 
   return (
@@ -28,12 +32,10 @@ const CheckList = () => {
             <h4>{e.title}</h4>
               <ul>
                 {
-                  e.CheckedData.map((ele:any) => {
-                    console.log(ele);
-                    
+                  e.CheckedData.map((ele:any) => {  
                     return(
                       <li style={{ textDecorationLine: ele.isDone ? "line-through" : "none" }} >
-                        <input className='check-box' type="checkbox" checked={ele.isDone} />
+                        <input onChange={() => {isListChecked(ele.id, {isDone: !ele.isDone}); dispatch(refresh())} } className='check-box' type="checkbox" checked={ele.isDone} />
                         {ele.description}
                       </li>
                     )
