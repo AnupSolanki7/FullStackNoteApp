@@ -108,3 +108,39 @@ export const isListChecked = async (id:any, data:any) => {
 
   return result;
 };
+
+
+export const checkNoteCreate = async ( data:any) => {
+  const result: any = await axios.post(`http://localhost:8000/api/checklist/createCheckList`, data ,{
+    headers: {
+      "Content-Type": "application/json",
+      authorization: user,
+    },
+  })
+
+  return result;
+};
+
+
+export const deleteCheckList = async ( id:any) => {
+  const result: any = await axios.delete(`http://localhost:8000/api/checklist/deleteList/${id}`,{
+    headers: {
+      "Content-Type": "application/json",
+      authorization: user,
+    },
+  })
+
+  return result;
+};
+
+
+export const searchData = async ( word:any) => {
+  const result: any = await axios.post(`http://localhost:8000/api/checklist/searchList`, {word:word},{
+    headers: {
+      "Content-Type": "application/json",
+      authorization: user,
+    },
+  })
+
+  return result;
+};

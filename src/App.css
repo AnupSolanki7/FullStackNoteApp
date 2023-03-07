@@ -479,7 +479,7 @@ textarea:focus-visible {
   height: 45px;
   overflow-y: scroll;
 }
-.note-view h4::-webkit-scrollbar{
+.note-view h4::-webkit-scrollbar {
   display: none;
 }
 
@@ -495,9 +495,7 @@ textarea:focus-visible {
   overflow-y: scroll;
 }
 
-
-
-.note-view p::-webkit-scrollbar{
+.note-view p::-webkit-scrollbar {
   display: none;
 }
 
@@ -514,7 +512,7 @@ textarea:focus-visible {
   height: 40px;
 }
 
-.note-view .input::-webkit-scrollbar{
+.note-view .input::-webkit-scrollbar {
   display: none;
 }
 
@@ -548,7 +546,6 @@ textarea:focus-visible {
   right: 45px;
 }
 
-
 .note-card ul {
   list-style: none;
   display: flex;
@@ -559,17 +556,57 @@ textarea:focus-visible {
   padding: 0px;
 }
 
-.note-card ul li .check-box{
+.note-card ul li .check-box {
   width: 15px;
   height: 15px;
   margin: 0px;
+  margin-right: 8px;
 }
 
-.note-card ul li{
+.note-card ul li {
   display: flex;
   width: 100%;
   border-bottom: 0.5px dotted gray;
   text-align: start;
   justify-content: flex-start;
   align-items: center;
+}
+
+.check-add-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: rgb(94, 94, 94);
+  border: 0.5px dotted rgb(94, 94, 94);
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+
+.create-note i{
+  margin: 0px;
+  width: 80%;
+  border: none;
+}
+
+.check-box-div{
+  margin-top: 5px;
+  height: 100px;
+  overflow-y: scroll;
+}
+
+.check-box-div::-webkit-scrollbar{
+  display: none;
+}
+
+.check-box-div .check-input{
+border: none;
+  font-size: 13px;
+  font-weight: 400;
+  margin: 5px 0px;
+}
+
+.check-box-div svg{
+  font-size: 22px;
 }
