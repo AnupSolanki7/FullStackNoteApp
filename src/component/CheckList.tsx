@@ -20,12 +20,7 @@ import SearchList from "./SearchList";
 
 const CheckList = () => {
   const [checkList, setCheckList]: any = useState([1]);
-  const [checkInputData, setCheckInputData] = useState({
-    id: 1,
-    description: "",
-  });
   const [checkAPIdata, setCheckAPIdata]: any = useState("");
-  const [isListAdd, setIsListAdd] = useState(true);
   const checkListReducer = useSelector((state: any) => state.CheckList);
   const dispatch = useDispatch();
 
@@ -43,11 +38,6 @@ const CheckList = () => {
     isListChecked(ele.id, { isDone: !ele.isDone }).then((e: any) => {
       dispatch(refresh());
     });
-  };
-
-  const handleAddCheck = () => {
-    setCheckList([...checkList, checkInputData]);
-    setIsListAdd(false);
   };
 
   const handleSubmit = () => {
@@ -68,10 +58,6 @@ const CheckList = () => {
     dispatch(refresh());
   };
 
-  const handleFilter = (id: any) => {
-    setCheckList(checkList.filter((e: any) => e.id !== id));
-    setIsListAdd(true);
-  };
 
   return (
     <>
@@ -88,28 +74,6 @@ const CheckList = () => {
               placeholder="Enter title....."
             />
             <div className="check-box-div">
-
-              {/* <span className="check-add-div">
-                <input
-                  className="check-input"
-                  type="text"
-                  value={checkInputData.description}
-                  onChange={(e: any) => {
-                    setCheckInputData({
-                      ...checkInputData,
-                      description: e.target.value,
-                    });
-                  }}
-                  placeholder="type description..."
-                />
-                {isListAdd ? (
-                  <MdOutlineAddCircleOutline onClick={handleAddCheck} />
-                ) : (
-                  <BiMinusCircle
-                    onClick={() => handleFilter(checkInputData.id)}
-                  />
-                )}
-              </span> */}
 
               {checkList?.map((e: any, index: any) => {
                 return (
