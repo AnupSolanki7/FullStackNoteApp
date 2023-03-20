@@ -53,6 +53,9 @@ const Header = () => {
                 <li>
                   <Link to={"/checklist"}>CheckList</Link>
                 </li>
+                <li>
+                  <Link to={"/chat"}>Chat</Link>
+                </li>
               </ul>
             </div>
             <Popconfirm

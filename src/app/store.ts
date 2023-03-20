@@ -1,5 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
+import ChatReducer from "../redux/chat"
 import CheckListReducer  from '../redux/checkList';
 import noteReducer from '../redux/noteSlice'
 
@@ -7,7 +8,8 @@ export const store = configureStore({
   reducer: {
     counter: counterReducer,
     Note: noteReducer,
-    CheckList : CheckListReducer
+    CheckList : CheckListReducer,
+    Chat: ChatReducer
   },
 });
 
